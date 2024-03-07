@@ -1,0 +1,9 @@
+[submodule "third_party/cs2-vip"]
+	path = third_party/cs2-vip
+	url = https://github.com/Pisex/cs2-vip
+[submodule "third_party/dynlibutils"]
+	path = third_party/dynlibutils
+	url = https://github.com/komashchenko/DynLibUtils
+[submodule "third_party/subhook"]
+	path = third_party/subhook
+	url = https://github.com/Zeex/subhook
