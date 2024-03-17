@@ -221,7 +221,7 @@ void SetPlayerConVar(CPlayerSlot nSlot, const char* name, const char* value)
 		cvar->set_name(name);
 		cvar->set_value(value);
 	
-		CallVFunc<void, WIN_LINUX(68, 69), INetworkSerializable*, const google::protobuf::Message&, int>(pNetChannel, pCNETMsg_SetConVar, msg, -1);
+		CallVFunc<void, WIN_LINUX(34, 35), INetworkSerializable*, const google::protobuf::Message&, int>(pNetChannel, pCNETMsg_SetConVar, msg, -1);
 	}
 }
 
@@ -238,7 +238,7 @@ const char* VIPBhop::GetLicense()
 
 const char* VIPBhop::GetVersion()
 {
-	return "1.0.0";
+	return "1.0.1";
 }
 
 const char* VIPBhop::GetDate()
