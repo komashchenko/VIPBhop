@@ -7,3 +7,6 @@
 [submodule "third_party/subhook"]
 	path = third_party/subhook
 	url = https://github.com/Zeex/subhook
+[submodule "hl2sdk-manifests"]
+	path = hl2sdk-manifests
+	url = https://github.com/alliedmodders/hl2sdk-manifests

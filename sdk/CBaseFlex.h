@@ -1,6 +1,6 @@
 #pragma once
 #include "CBaseAnimGraph.h"
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 
 class CBaseFlex : public CBaseAnimGraph
 {

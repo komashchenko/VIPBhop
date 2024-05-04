@@ -2,10 +2,10 @@
 #include "CBaseCombatCharacter.h"
 #include "CBasePlayerController.h"
 #include "ehandle.h"
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 
 class CBasePlayerPawn : public CBaseCombatCharacter
 {
 public:
-	SCHEMA_FIELD(CHandle<CBasePlayerController>, CBasePlayerPawn, m_hController);	
+	SCHEMA_FIELD(CHandle<CBasePlayerController>, CBasePlayerPawn, m_hController);
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include "CBaseModelEntity.h"
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 
 class CBaseAnimGraph : public CBaseModelEntity
 {

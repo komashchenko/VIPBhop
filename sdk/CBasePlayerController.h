@@ -2,7 +2,7 @@
 #include "CBaseEntity.h"
 #include "CBasePlayerPawn.h"
 #include "ehandle.h"
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 
 class CBasePlayerController : public SC_CBaseEntity
 {

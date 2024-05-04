@@ -1,5 +1,5 @@
 #pragma once
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 #include "CBasePlayerPawn.h"
 
 class CPlayerPawnComponent

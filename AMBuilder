@@ -17,7 +17,7 @@ for sdk_target in MMSPlugin.sdk_targets:
   ]
 
   binary.sources += [
-    os.path.join('sdk', 'schemasystem.cpp'),
+    os.path.join('sdk', 'schemasystem_helper.cpp'),
     os.path.join('third_party', 'dynlibutils', 'module.cpp'),
     os.path.join('third_party', 'subhook', 'subhook.c')
   ]
@@ -37,6 +37,10 @@ for sdk_target in MMSPlugin.sdk_targets:
     os.path.join(sdk['path'], 'common', 'network_connection.proto'),
     os.path.join(sdk['path'], 'common', 'networkbasetypes.proto'),
   ])]
+
+  # Export only CreateInterface
+  if binary.compiler.target.platform == 'linux':
+    binary.compiler.linkflags += ['-Wl,--version-script=' + os.path.join(builder.currentSourcePath, 'ExportMap')]
 
   nodes = builder.Add(binary)
   MMSPlugin.binaries += [nodes]

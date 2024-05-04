@@ -21,7 +21,7 @@
 #include <networksystem/inetworkmessages.h>
 #include <inetchannel.h>
 #include <networkbasetypes.pb.h>
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 #include "sdk/CCSPlayer_MovementServices.h"
 #include "utils.hpp"
 #include "module.h"
@@ -34,7 +34,6 @@ PLUGIN_EXPOSE(VIPBhop, g_VIPBhop);
 IVIPApi* g_pVIPCore;
 
 IVEngineServer2* engine = nullptr;
-CSchemaSystem* g_pCSchemaSystem = nullptr;
 CGameEntitySystem* g_pGameEntitySystem = nullptr;
 ConVar* sv_autobunnyhopping;
 bool g_bBhop[64] = {};
@@ -50,7 +49,7 @@ bool VIPBhop::Load(PluginId id, ISmmAPI* ismm, char* error, size_t maxlen, bool 
 	PLUGIN_SAVEVARS();
 
 	GET_V_IFACE_CURRENT(GetEngineFactory, engine, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION)
-	GET_V_IFACE_CURRENT(GetEngineFactory, g_pCSchemaSystem, CSchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
+	GET_V_IFACE_CURRENT(GetEngineFactory, g_pSchemaSystem, ISchemaSystem, SCHEMASYSTEM_INTERFACE_VERSION);
 	GET_V_IFACE_CURRENT(GetEngineFactory, g_pNetworkMessages, INetworkMessages, NETWORKMESSAGES_INTERFACE_VERSION);
 	GET_V_IFACE_CURRENT(GetEngineFactory, g_pCVar, ICvar, CVAR_INTERFACE_VERSION);
 	GET_V_IFACE_CURRENT(GetServerFactory, g_pSource2Server, ISource2Server, SOURCE2SERVER_INTERFACE_VERSION);
@@ -221,7 +220,7 @@ void SetPlayerConVar(CPlayerSlot nSlot, const char* name, const char* value)
 		cvar->set_name(name);
 		cvar->set_value(value);
 	
-		CallVFunc<void, WIN_LINUX(34, 35), INetworkSerializable*, const google::protobuf::Message&, int>(pNetChannel, pCNETMsg_SetConVar, msg, -1);
+		pNetChannel->SendNetMessage(pCNETMsg_SetConVar, &msg, BUF_DEFAULT);
 	}
 }
 
@@ -238,7 +237,7 @@ const char* VIPBhop::GetLicense()
 
 const char* VIPBhop::GetVersion()
 {
-	return "1.0.1";
+	return "1.0.0";
 }
 
 const char* VIPBhop::GetDate()

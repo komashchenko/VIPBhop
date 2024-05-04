@@ -1,7 +1,7 @@
 #pragma once
 #include "CBaseFlex.h"
 #include "CCSPlayerPawn.h"
-#include "schemasystem.h"
+#include "schemasystem_helper.h"
 
 class CBaseGrenade : public CBaseFlex
 {
