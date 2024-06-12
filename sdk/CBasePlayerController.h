@@ -4,7 +4,7 @@
 #include "ehandle.h"
 #include "schemasystem_helper.h"
 
-class CBasePlayerController : public SC_CBaseEntity
+class CBasePlayerController : public CBaseEntity
 {
 public:
 	SCHEMA_FIELD(CHandle<CBasePlayerPawn>, CBasePlayerController, m_hPawn);

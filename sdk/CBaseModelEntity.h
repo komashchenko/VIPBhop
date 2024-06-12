@@ -2,7 +2,7 @@
 #include "CBaseEntity.h"
 #include "schemasystem_helper.h"
 
-class CBaseModelEntity : public SC_CBaseEntity
+class CBaseModelEntity : public CBaseEntity
 {
 public:
 };

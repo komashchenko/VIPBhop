@@ -1,8 +1,8 @@
 #pragma once
-#include <baseentity.h>
+#include "entity2/entityinstance.h"
 #include "schemasystem_helper.h"
 
-class SC_CBaseEntity : public CBaseEntity
+class CBaseEntity : public CEntityInstance
 {
 public:
 };
