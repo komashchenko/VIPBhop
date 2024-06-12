@@ -213,14 +213,16 @@ void SetPlayerConVar(CPlayerSlot nSlot, const char* name, const char* value)
 
 	if (pNetChannel)
 	{
-		static INetworkSerializable* pCNETMsg_SetConVar = g_pNetworkMessages->FindNetworkMessagePartial("CNETMsg_SetConVar");
+		static INetworkMessageInternal* pMsg = g_pNetworkMessages->FindNetworkMessagePartial("CNETMsg_SetConVar");
 
-		CNETMsg_SetConVar msg;
-		auto cvar = msg.mutable_convars()->add_cvars();
+		CNetMessagePB<CNETMsg_SetConVar>* msg = pMsg->AllocateMessage()->ToPB<CNETMsg_SetConVar>();
+		auto cvar = msg->mutable_convars()->add_cvars();
 		cvar->set_name(name);
 		cvar->set_value(value);
-	
-		pNetChannel->SendNetMessage(pCNETMsg_SetConVar, &msg, BUF_DEFAULT);
+
+		pNetChannel->SendNetMessage(pMsg, msg, BUF_DEFAULT);
+
+		pMsg->DeallocateMessage(msg);
 	}
 }
 
@@ -237,7 +239,7 @@ const char* VIPBhop::GetLicense()
 
 const char* VIPBhop::GetVersion()
 {
-	return "1.0.0";
+	return "1.0.2";
 }
 
 const char* VIPBhop::GetDate()
