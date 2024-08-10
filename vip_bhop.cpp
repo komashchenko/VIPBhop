@@ -220,9 +220,9 @@ void SetPlayerConVar(CPlayerSlot nSlot, const char* name, const char* value)
 		cvar->set_name(name);
 		cvar->set_value(value);
 
-		pNetChannel->SendNetMessage(pMsg, msg, BUF_DEFAULT);
+		pNetChannel->SendNetMessage(msg, BUF_DEFAULT);
 
-		pMsg->DeallocateMessage(msg);
+		delete msg;
 	}
 }
 
@@ -239,7 +239,7 @@ const char* VIPBhop::GetLicense()
 
 const char* VIPBhop::GetVersion()
 {
-	return "1.0.2";
+	return "1.0.3";
 }
 
 const char* VIPBhop::GetDate()
